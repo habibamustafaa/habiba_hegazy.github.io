@@ -36,13 +36,73 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
+./* === LOGO + NAME === */
+.logo-container {
+  display: inline-flex;      /* keeps logo + text in a line */
+  align-items: center;       /* centers them vertically */
+  gap: 15px;                 /* space between logo and name */
+  text-decoration: none;
+  color: inherit;
+  vertical-align: middle;
+}
+
+.logo-container img {
+  height: 42px;              /* adjust as needed */
+  width: auto;
+  display: block;
+}
+
+.logo-container span {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #c2635d;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.logo-container, 
+.logo-container img, 
+.logo-container span {
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+  gap: 20px !important;
+
+}
+
+.logo-container {
+  margin-left: 0px;  /* smaller = closer to edge */
+}
+
+
 .navbar {
-  max-width: var(--maxw);
+  max-width: 100%;
   margin: 0 auto;
-  padding: 16px 20px;
+  padding: 15px 100px;
   display: flex;
   align-items: center;
+  gap: 8px;
   justify-content: space-between;
+}
+
+.navbar a,
+.navbar-brand a {
+  text-decoration: none; /* removes underline */
+}
+
+.navbar a:hover {
+  text-decoration: none; /* prevents it from reappearing on hover */
+}
+
+.navbar-brand img {
+  height: 45px; /* adjust size */
+  width: auto;
+}
+
+.navbar-brand span {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #c2635d; /* matches your site’s pinkish-red tone */
 }
 
 .nav-brand {
@@ -105,7 +165,7 @@ body {
   text-decoration: none;
   color: #000000;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   transition: color 0.3s ease;
   padding-bottom: 4px;
 }
@@ -129,6 +189,80 @@ body {
   font-size: 1.5rem;
   cursor: pointer;
 }
+.nav-brand {
+  position: relative; /* Required for ::after to align properly */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between logo and text */
+  overflow: hidden; /* hides the sparkle when moving across */
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* spacing between logo and name */
+}
+
+/* Sparkle only on the text */
+.brand-name {
+  position: relative;
+  font-size: 1.5rem; /* adjust as you like */
+  font-weight: 700;
+  overflow: hidden;
+}
+
+/* Sparkle overlay */
+.brand-name::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.8) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: sparkle 4s infinite;
+}
+
+@keyframes sparkle {
+  0% { left: -50%; }
+  100% { left: 120%; }
+}
+.brand-name {
+  position: relative;
+  font-size: 1.8rem; /* adjust size */
+  font-weight: 700;
+  color: #000;
+  display: inline-block;
+  padding: 4px 8px; /* small padding to prevent cropping */
+  overflow: visible; /* prevents cutting off the sparkle */
+}
+
+/* Sparkle animation */
+.brand-name::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  height: 100%;
+  width: 60%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.6) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: sparkle 4s linear infinite;
+  pointer-events: none; /* ensure it doesn’t block clicks */
+}
+
+
 
 /* HERO */
 .hero {
@@ -249,7 +383,7 @@ body {
     left: 125%;
   }
 }
-..cv-section {
+.cv-section {
   display: flex;
   flex-direction: column;    /* stack CV button + icons */
   align-items: flex-start;   /* align to the left */
@@ -296,7 +430,7 @@ body {
   background: #fee5e5;                 /* white box */
   padding: 40px 30px;               /* breathing room */
   border-radius: 40px;              /* rounded corners */
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* soft shadow */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* soft shadow */
   text-align: center;
   max-width: 800px;
   margin: 80px auto;                /* center on page */
@@ -314,7 +448,7 @@ body {
   font-size: 1.15rem;
   line-height: 1.7;
   font-weight: 500;
-  color: #222;                      /* darker than before */
+  color: #000000;                      /* darker than before */
   white-space: pre-line;
 }
 
@@ -367,8 +501,8 @@ body {
 }
 
 .skill-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.20);
+  transform: translateY(-20px);
+  box-shadow: 0 8px 20px rgba(204, 100, 100, 0.756);
 }
 
 .skill-card h3 {
@@ -406,7 +540,7 @@ body {
 
 /* Hover animations for icons */
 .skill-card:hover h3 i {
-  transform: rotate(20deg) scale(1.2);
+  transform: rotate(25deg) scale(1.2);
 }
 
 
